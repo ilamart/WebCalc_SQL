@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "История";
+}
+<head>
+
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+
+</head>
+
+<h2>@ViewData["Title"]</h2>
+
+@*<style>
+    .table {
+        overflow: scroll;
+        height: 100px;
+    }
+</style>*@
+
+<table class="table">
+    <thead>
+        <tr><th>Выражение</th><th></th><th>Результат</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model.History)
+        {
+            <tr><td>@note.Expression</td><td> = </td><td>@note.Result</td></tr>
+        }
+    </tbody>
+</table>
+
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    <p><br /></p>
+    <div><label>Введите выражение: </label><br /><input asp-for="Note.Expression" /></div>
+    <input type="submit" value="Рассчитать!" />
+    <p></p>
+</form>
